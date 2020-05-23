@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="新建文本文档.css">
+    <link rel="stylesheet" href="reset.min.css">
+</head>
+<body>
+    <div class="t">
+        <div class="h">
+            <div class="logo"><img src="https://mail.swpu.edu.cn/tpl/login/user/images/login_logo.png" /></div>
+            <a href="/?q=help" target="_blank" class="help">帮助</a>
+        </div>
+    </div>
+    
+    <div class="c">
+             
+            <div class="box" style="right:60px; top:60px;" id="box">
+                <!-- 登录到切换工具栏开始 -->
+                <ul class="tab" id="tab">
+                    <!--li class="current">收信</li-->
+                    <li onclick="tabClick(this)" id='via_acct'>帐号登录</li>
+                                                    <li class="dragbar" id="dragbar"></li>
+                </ul>
+                <!-- 登录到切换工具栏结束 -->
+                <!-- 错误信息提示框开始 -->
+                <div class="msg" style="display:none" id="msg"></div>
+                <!-- 错误信息提示框结束 -->
+    
+                                    
+                   <!-- 短信登录-->
+                    <div class="boxc" id="tab_via_sms" style="display:none">
+                        <h3>
+                            用户短信登录 
+                        </h3>
+                        <div class="text_item text_item1">
+                            <input class="sms_input" id="sms_mobile" type="text" class="text" placeholder="手机号" autocomplete="off" onfocus="this.className='text_f1'" onblur="this.className='sms_input'" />
+                            <div id="sms_send" class="sms_login sms_di/sabled ">获取短信密码</div>
+                        </div>
+                    <form name='form_login2' method="post" action="/user/?q=login.sms.do">
+                    <div class="text_item">
+                        <input type="hidden" class="text" name="mobile" value=""/>
+                        <input type="password" class="text" name="password" _placeholder="手机动态密码" onfocus="this.className='text_f'" onblur="this.className='text'" />
+                    </div>
+                    <div class="bl">
+                            <span style="float:left">
+                                                <input type="hidden" name="login_ssl" value="0" />
+                                            </span>
+                        <span class="blt">
+                                            </span> 
+                      </div>
+                    <div class="btnb">
+                        <!-- 验证码控制开始 -->
+                           <input type="text" name="auth_code" class="text" _placeholder="验证码" style="width:100px;" onfocus="this.className='text_f'" onblur="this.className='text'" id="auth_code2"/>
+                        <div class="yzmbox" style="z-index:1000;display:none" id="auth_code_img2"></div>
+                        <!-- 验证码控制结束 -->
+    
+                        <!-- 登录后的URL控制开始 -->
+                            
+                            <!-- 登录成功以后跳转的URL -->
+                                                    <input type="hidden" name="go" value="/?q=base">
+                                                
+                            <!-- 登录成功失败后跳转的URL -->
+                            <input type="hidden" name="referer" value="/?q=login">
+    
+                        <!-- 登录后的URL控制结束 -->
+    
+                        <!-- 登录按钮 -->
+                        <input type="submit"  name="submit" class="btn" value="登  录"  style="float:right"/>
+                   
+                        <div style="clear:both"></div>
+                    </div>
+            </form>
+                   </div>
+                    <!-- end 短信登录-->
+     
+                   <!-- 账号密码登录-->
+                    <div class="boxc" id="tab_via_acct">
+                        <h3>
+                            用户登录 
+                        </h3>
+                        <div class="text_item">
+                        <input type="text" class="text" id="user" style="ime-mode:disabled" autocomplete="off" _placeholder="用户名" onfocus="this.className='text_f'" onblur="this.className='text'" />
+                        <div class="pop" style="display:none;" id="pop">
+                                                </div>
+                        </div>
+                    <!-- end 账号密码登录-->
+                    
+                    <form name='form_login' method="post" action="/user/?q=login.do">
+                    <div class="text_item">
+                        <input type="hidden" class="text" name="user" id="user"  value=""/>
+                        <input type="password" class="text" name="password" id="password" _placeholder="密码" onfocus="this.className='text_f'" onblur="this.className='text'" />
+                    </div>
+                    <div class="bl">
+                            <span style="float:left">
+                                                <input type="hidden" name="login_ssl" value="0" />
+                                                <font style="color:red;font-family:宋体;clear: both;">学生选择@stu.swpu.edu.cn</font> 
+                        </span>
+                        <span class="blt">
+    
+                        <a href="/?q=resetpw" target="_self">忘记密码</a>                    </span> 
+                      </div>
+                    <div class="btnb">
+                        <!-- 验证码控制开始 -->
+                           <input type="text" name="auth_code" class="text" _placeholder="验证码" style="width:100px; float:left;display:none" onfocus="this.className='text_f'" onblur="this.className='text'" id="auth_code"/>
+                        <div class="yzmbox" style="z-index:1000;display:none" id="auth_code_img"></div>
+                        <!-- 验证码控制结束 -->
+    
+                        <!-- 登录后的URL控制开始 -->
+                            
+                            <!-- 登录成功以后跳转的URL -->
+                                                    <input type="hidden" name="go" value="/?q=base">
+                                                
+                            <!-- 登录成功失败后跳转的URL -->
+                            <input type="hidden" name="referer" value="/?q=login">
+    
+                        <!-- 登录后的URL控制结束 -->
+    
+                        <!-- 登录按钮 -->
+                        <input type="submit"  name="submit" class="btn" onclick="check()" value="登  录"  style="float:right"/>
+                   
+                        <div style="clear:both"></div>
+                    </div>
+            </form>
+                   </div>
+            </div>
+            <div class="f" id="f" style="display:none;">
+                    </div>
+            <div class="login_drag" id="drag_target"></div>
+    </div>
+    
+    <div class="b">
+    <!-- 版权信息开始 -->
+    <!-- eYouMail 5 &copy;2009-2012 eYou.net &nbsp;&nbsp;&nbsp;&nbsp;中国第一大邮件系统软件与整体解决方案提供商&nbsp;&nbsp;&nbsp;&nbsp; -->
+    西南石油大学
+    <!-- 版权信息结束 -->
+    </div>
+    <script type="text/javascript" src="新建文本文档.js"></script>
+</body>
+</html>
