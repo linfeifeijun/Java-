@@ -1,0 +1,11 @@
+-Xms128m
+-Xmx750m
+-XX:ReservedCodeCacheSize=240m
+-XX:+UseConcMarkSweepGC
+-XX:SoftRefLRUPolicyMSPerMB=50
+-ea
+-Dsun.io.useCanonCaches=false
+-Djava.net.preferIPv4Stack=true
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:-OmitStackTraceInFastThrow
+-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2018.3.3\bin\JetbrainsIdesCrack-4.2-release-sha1-3323d5d0b82e716609808090d3dc7cb3198b8c4b.jar
